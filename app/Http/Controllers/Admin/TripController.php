@@ -17,7 +17,7 @@ use Throwable;
 
 class TripController extends Controller
 {
-    const int SUB_ROUTE_LIMIT = 10;
+    const SUB_ROUTE_LIMIT = 10;
     /**
      * @return View
      */
