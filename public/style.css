@@ -1,0 +1,227 @@
+:root {
+    --color-primary-100: #d3f8f5;
+    --color-primary-200: #bdf1ec;
+    --color-primary-800: #009688;
+    --color-primary-700: #06a091;
+}
+
+* {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+            "wdth" 100,
+            "YTLC" 500;
+}
+
+b {
+    font-weight: 600;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+
+.bg-primary-100, .hover-primary-100:hover {
+    background-color: var(--color-primary-100);
+}
+
+.bg-primary-200, .hover-primary-200:hover {
+    background-color: var(--color-primary-200);
+}
+
+.bg-primary-800, .hover-primary-800:hover {
+    background-color: var(--color-primary-800);
+}
+
+.text-primary-800 {
+    color: var(--color-primary-800);
+}
+
+.bg-primary-700, .hover-primary-700:hover {
+    background-color: var(--color-primary-700);
+}
+
+.text-primary-700 {
+    color: var(--color-primary-700);
+}
+
+nav {
+    min-height: 60px;
+}
+
+.main {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 60px);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
+.customer-border-right {
+    border-right: solid 2px var(--color-primary-100);
+}
+
+.list-group-item.active {
+    background-color: var(--color-primary-800) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--color-primary-700);
+    border-color: var(--color-primary-800);
+}
+
+.ticket-action-group {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.ticket_created_at {
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    font-size: 12px;
+}
+
+.list-group-item.active {
+    border-color: transparent;
+}
+
+
+/* BUS SEATS */
+
+.bus-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: solid 3px #b3b3b3;
+    min-height: 600px;
+}
+
+.seat {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.seat.available {
+    background-image: url("./seat_available.png");
+    cursor: pointer;
+}
+
+.seat.reserved {
+    background-image: url("./seat_reserved.png");
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background-color: #4e73df;
+}
+
+.aisle {
+    grid-column: span 2;
+}
+
+/* Hide the actual checkboxes */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Style the custom checkbox */
+input[type="checkbox"] + label {
+    width: 80px;
+    height: 80px;
+    background-image: url("./seat_disabled.png");
+    background-size: cover;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background-color 0.3s;
+    user-select: none;
+}
+
+input[type="checkbox"]:checked + label {
+    background-image: url("./seat_selected.png");
+}
+
+table th{
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+/* --- */
+
+/*Banner Section*/
+.banner-area {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    color: #fff;
+}
+
+.banner-area:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.1;
+}
+
+.banner-text {
+    position: relative;
+}
+
+.banner-text h1 {
+    font-size: 46px;
+    font-weight: 700;
+    color: #fff;
+}
+
+
+.map-container {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+}
+
+.map-container iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
