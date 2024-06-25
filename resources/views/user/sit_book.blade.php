@@ -125,7 +125,7 @@
                                 </p>
                                 <div>
                                     <img src="{{ asset('payment_method.png') }}" class="img-fluid" width="120" alt="">
-                                    <img src="{{ asset('payment_method_cash.png') }}" class="img-fluid" width="120" alt="">
+                                    <img src="{{ asset('payment_method_cash.webp') }}" class="img-fluid mt-1" width="55" alt="">
                                 </div>
                                 
                                 <div class="mt-2">
