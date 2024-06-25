@@ -1,8 +1,8 @@
 :root {
-    --color-primary-100: #d3f8f5;
-    --color-primary-200: #bdf1ec;
-    --color-primary-800: #009688;
-    --color-primary-700: #06a091;
+    --color-primary-100: #e5f8ed;
+    --color-primary-200: #d6f3e2;
+    --color-primary-800: #0ba84f;
+    --color-primary-700: #089d49;
 }
 
 * {
@@ -224,4 +224,38 @@ table th{
     height: 100%;
     width: 100%;
     position: absolute;
+}
+
+.step-heading {
+    margin: 20px 0;
+    font-size: 2em;
+    padding: 10px 0;
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+}
+.icon-box {
+    background-color: #F1F1F1;
+    height: 75px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.icon-box i {
+    font-size: 3em;
+    padding-top: 20px;
+    color: var(--color-primary-700);
+}
+.step-title {
+    font-weight: bold;
+    color: var(--color-primary-700);
+    margin-top: 0;
+}
+.payment-box {
+    background-color: #F1F1F1;
+    border: 1px solid #dddddd;
+    padding: 10px;
+}
+.payment-box i {
+    color: var(--color-primary-700);
+    font-size: 21px;
+    margin-right: 5px;
 }
