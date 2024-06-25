@@ -89,7 +89,7 @@
                     <div class="col-md-9">
                         <h4 class="font-weight-bold text-success mt-0">Select</h4>
                         <div>
-                            Select your desired trip and choose your seats
+                            Select your desired bus and choose your seats
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                     <div class="col-md-9">
                         <h4 class="font-weight-bold text-success mt-0">Pay</h4>
                         <div>
-                            Pay by bank cards or mobile banking
+                            Pay by bKash, Nagad or Cash
                         </div>
                     </div>
                 </div>

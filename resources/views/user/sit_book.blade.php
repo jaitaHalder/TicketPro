@@ -120,9 +120,14 @@
 
                             <div class="my-1 d-flex flex-column mt-2">
                                 <b>Payment Method</b>
-                                <p class="d-block text-secondary" style="font-size: 12px">
+                                <p class="d-block text-secondary m-0" style="font-size: 12px">
                                     If you make a payment through bKash or Nagad, please collect the transaction ID.
                                 </p>
+                                <div>
+                                    <img src="{{ asset('payment_method.png') }}" class="img-fluid" width="120" alt="">
+                                    <img src="{{ asset('payment_method_cash.png') }}" class="img-fluid" width="120" alt="">
+                                </div>
+                                
                                 <div class="mt-2">
                                     <div class="form-check">
                                         <input class="form-check-input payment-method" type="radio"
