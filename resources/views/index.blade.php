@@ -4,7 +4,7 @@
 @section('title', 'Home')
 
 @section('content')
-    <section class="main" style="background-image: url('{{ asset('cover1.jpg') }}')">
+    <section class="main" style="background-image: url('{{ asset('cover2.jpg') }}')">
         <div class="overlay">
             <!-- Add any content you want within the overlay here -->
             <div class="container">
@@ -61,6 +61,62 @@
             </div>
         </div>
     </section>
+
+    @if (!request()->input('origin'))
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="font-weight-bold text-success my-4 py-2 border-top border-bottom">Buy bus tickets in 3 easy steps</h3>
+                </div>
+
+                <div class="col-md-4 d-flex mb-3">
+                    <div class="col-md-3 d-flex justify-content-center align-items-center bg-light h-100 me-2">
+                        <i class="fa fa-search fa-3x text-success"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <h4 class="font-weight-bold text-success mt-0">Search</h4>
+                        <div>
+                            Choose your origin, destination, journey dates and search for buses
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex mb-3">
+                    <div class="col-md-3 d-flex justify-content-center align-items-center bg-light h-100 me-2">
+                        <i class="fa fa-bus fa-3x text-success"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <h4 class="font-weight-bold text-success mt-0">Select</h4>
+                        <div>
+                            Select your desired trip and choose your seats
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex mb-3">
+                    <div class="col-md-3 d-flex justify-content-center align-items-center bg-light h-100 me-2">
+                        <i class="fa fa-money-bill fa-3x text-success"></i>
+                    </div>
+                    <div class="col-md-9">
+                        <h4 class="font-weight-bold text-success mt-0">Pay</h4>
+                        <div>
+                            Pay by bank cards or mobile banking
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 text-center mt-4">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center align-items-center bg-light p-3 border rounded">
+                            <i class="fa fa-lock text-success mr-2 fa-lg"></i>&nbsp;Safe and Secure online payments
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
 
     <section class="py-5" id="bus-list">
         <div class="container">

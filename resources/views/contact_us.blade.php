@@ -3,18 +3,7 @@
 @section('title', 'Contact Us')
 
 @section('content')
-    <div class="banner-area d-flex align-items-center"
-         style="background-image:url('{{ asset("banner1.jpg") }}');">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="banner-text">
-                        <h1 class="text-center">Contact Us</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('banner', ['title' => 'Contact Us'])
 
     <section>
         <div class="container my-5">

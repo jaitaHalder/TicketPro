@@ -13,8 +13,14 @@ use Illuminate\View\View;
 
 class SettingController extends Controller
 {
+    /**
+     * @var array
+     */
     private array $settings;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->settings = Setting::query()->pluck("value", "setting_name")->toArray();
