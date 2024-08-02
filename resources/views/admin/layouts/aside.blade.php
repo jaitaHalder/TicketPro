@@ -25,7 +25,7 @@
     ? "active" : "" }}">
         <a class="nav-link" href="{{ route("admin.buses.index") }}">
             <i class="fas fa-fw fa-car"></i>
-            <span>Buses</span>
+            <span>Trains</span>
         </a>
     </li>
 
