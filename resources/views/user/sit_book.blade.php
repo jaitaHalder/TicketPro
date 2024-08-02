@@ -6,12 +6,6 @@
 @section('content')
     <section class="py-5">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    {!! $emailVerificationLink !!}
-                </div>
-            </div>
-
             <form action="{{ route('user.seat_book') }}" id="form" method="post">
                 @csrf
                 <input type="hidden" name="trip_id" value="{{ $route->trip_id }}">
@@ -33,34 +27,22 @@
                                 <img src="{{ asset('seat_selected.png') }}" alt="" width="80">
                                 <small class="text-center fw-light d-block">Selected</small>
                             </div>
-                            @if ($emailVerificationLink)
-                                <div>
-                                    <img src="{{ asset('seat_disabled.png') }}" alt="" width="80">
-                                    <small class="text-center fw-light d-block">Disabled</small>
-                                </div>
-                            @endif
                         </div>
                         <div class="bus-layout" id="bus_seat">
                             @for($i = 1; $i <= $route->trip->bus->capacity; $i++)
-                                @if ($emailVerificationLink)
-                                    <input type="checkbox" name="seats[]" id="seat{{ $i }}" value="{{ $i }}"
-                                           class="seat-checkbox" disabled>
-                                    <label for="seat{{ $i }}" class="seat disabled">{{ $i }}</label>
+                                @if (in_array($i, $ticketSeats))
+                                <input type="checkbox" name="seats[]" id="seat{{ $i }}" value="{{ $i }}"
+                                    class="seat-checkbox" disabled>
+                                <label for="seat{{ $i }}" class="seat reserved">{{ $i }}</label>
                                 @else
-                                    @if (in_array($i, $ticketSeats))
+                                    @if (is_array(old('seats')) && in_array($i, old('seats')))
                                         <input type="checkbox" name="seats[]" id="seat{{ $i }}" value="{{ $i }}"
-                                               class="seat-checkbox" disabled>
-                                        <label for="seat{{ $i }}" class="seat reserved">{{ $i }}</label>
+                                            class="seat-checkbox seat-available" checked>
+                                        <label for="seat{{ $i }}" class="seat available">{{ $i }}</label>
                                     @else
-                                        @if (is_array(old('seats')) && in_array($i, old('seats')))
-                                            <input type="checkbox" name="seats[]" id="seat{{ $i }}" value="{{ $i }}"
-                                                   class="seat-checkbox seat-available" checked>
-                                            <label for="seat{{ $i }}" class="seat available">{{ $i }}</label>
-                                        @else
-                                            <input type="checkbox" name="seats[]" id="seat{{ $i }}" value="{{ $i }}"
-                                                   class="seat-checkbox seat-available">
-                                            <label for="seat{{ $i }}" class="seat available">{{ $i }}</label>
-                                        @endif
+                                        <input type="checkbox" name="seats[]" id="seat{{ $i }}" value="{{ $i }}"
+                                            class="seat-checkbox seat-available">
+                                        <label for="seat{{ $i }}" class="seat available">{{ $i }}</label>
                                     @endif
                                 @endif
                             @endfor

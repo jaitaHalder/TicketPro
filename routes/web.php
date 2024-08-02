@@ -80,11 +80,6 @@ Route::post("user/signup", [UserController::class, "signupAction"])->name("user.
 Route::get("user/login", [UserController::class, "login"])->name("user.login");
 Route::post("user/login", [UserController::class, "loginAction"])->name("user.login");
 
-Route::get('user/forgot', [UserController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('user/forgot', [UserController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('user/reset/{token}', [UserController::class, 'showResetForm'])->name('password.reset');
-Route::post('user/reset', [UserController::class, 'reset'])->name('password.update');
-
 // User Group
 Route::group(["middleware" => "auth", "prefix" => "user", "as" => "user."], function() {
     // UserController

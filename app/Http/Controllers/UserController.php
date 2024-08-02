@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helper;
-use App\Mail\TicketMail;
-use App\Mail\UserEmailVerificationMail;
 use App\Models\Bus;
 use App\Models\BusStop;
 use App\Models\Payment;
@@ -35,70 +33,6 @@ class UserController extends Controller
     {
         $today = date('Y-m-d');
         return strtotime($date) < strtotime($today);
-    }
-
-    /**
-     * @return string|null
-     */
-    private function emailVerificationLink(): string|null
-    {
-        if (empty(Auth::user()->__get('email_verified_at'))) {
-            $url = route('user.email_verification');
-
-            return <<< HTML
-                <div class="alert alert-danger alert-dismissible fade show rounded-0" role="alert">
-                    <strong>Verification Required!</strong> Please click the link <a href="$url" class="alert-link">Send verification link</a> to verify your email address.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                HTML;
-        }
-
-        return null;
-    }
-
-    /**
-     * @param $token
-     * @return RedirectResponse
-     */
-    public function emailVerification($token = null): RedirectResponse
-    {
-        // When click a verification link
-        if ($token !== null) {
-            User::query()
-                ->where('remember_token', '=', $token)
-                ->firstOrFail();
-
-            User::query()
-                ->where('remember_token', '=', $token)
-                ->update([
-                    'email_verified_at' => now(),
-                    'remember_token' => null,
-                ]);
-
-            return redirect()
-                ->route('user.dashboard')
-                ->with('success', 'Your email has been successfully verified.');
-        }
-
-        try {
-            // Sent new link to email
-            $token = Str::random(60);
-
-            $user = User::query();
-            $user->where('id', '=', Auth::id())
-                ->update(['remember_token' => $token]);
-            $user = $user->first();
-
-            Mail::to($user->email)->send(new UserEmailVerificationMail($user, $token));
-
-            return redirect()
-                ->back()
-                ->with('success', 'Please check your email');
-        } catch (Exception $exception) {
-            return redirect()
-                ->back()
-                ->with('error', $exception->getMessage());
-        }
     }
 
     /**
@@ -184,93 +118,12 @@ class UserController extends Controller
         return redirect()->route("user.login");
     }
 
-
-    /**
-     * @return View
-     */
-    public function showLinkRequestForm(): View
-    {
-        return view("user.auth.password_email");
-    }
-
-    /**
-     * @param Request $request
-     * @return RedirectResponse
-     */
-    public function sendResetLinkEmail(Request $request): RedirectResponse
-    {
-        $validator = Validator::make($request->all(), [
-            "email" => "required|email|exists:users,email"
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->with("error", "This email address doesn't exist.");
-        }
-
-        try {
-            $status = Password::sendResetLink(
-                $request->only('email')
-            );
-
-            return $status === Password::RESET_LINK_SENT
-                ? back()->with('success', __($status))
-                : back()->with('error', __($status));
-        } catch (Exception $exception) {
-            return redirect()
-                ->back()
-                ->withInput()
-                ->with("error", $exception->getMessage());
-        }
-    }
-
-    /**
-     * @param Request $request
-     * @param $token
-     * @return View
-     */
-    public function showResetForm(Request $request, $token = null): View
-    {
-        return view('user.auth.password_reset')->with(
-            ['token' => $token, 'email' => $request->__get('email')]
-        );
-    }
-
-    /**
-     * @param Request $request
-     * @return RedirectResponse
-     */
-    public function reset(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function (User $user, string $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password),
-                    'remember_token' => Str::random(60),
-                ])->save();
-            }
-        );
-
-        return $status === Password::PASSWORD_RESET
-            ? redirect()->route('user.login')->with('success', __($status))
-            : back()->with('error', __($status));
-    }
-
     /**
      * @return View
      */
     public function dashboard(): View
     {
-        $emailVerificationLink = $this->emailVerificationLink();
-        return view('user.dashboard', compact('emailVerificationLink'));
+        return view('user.dashboard');
     }
 
     /**
@@ -315,9 +168,7 @@ class UserController extends Controller
         $search['destination'] = BusStop::query()->find($destination);
         $search['date'] = $date ? Helper::convertBookingDate($date) : null;
 
-        $emailVerificationLink = $this->emailVerificationLink();
-
-        return view('user.sit_book', compact('route', 'search', 'date', 'bus', 'ticketSeats', 'emailVerificationLink'));
+        return view('user.sit_book', compact('route', 'search', 'date', 'bus', 'ticketSeats'));
     }
 
     /**
@@ -411,8 +262,6 @@ class UserController extends Controller
                 ->where('user_id', '=', Auth::id())
                 ->where('id', '=', $ticket_id)
                 ->first();
-
-            Mail::to($ticket->user->email)->send(new TicketMail($ticket));
 
             return redirect()
                 ->route('user.bookings')

@@ -35,11 +35,6 @@
                         <button type="submit" class="mt-4 btn btn-lg bg-primary-800 hover-primary-700 text-light w-100">
                             Login
                         </button>
-
-                        <p class="text-center mt-4 mb-4">
-                            <a href="{{ route('password.request') }}" class="text-primary-800">Forgot Password</a>
-                        </p>
-
                         <hr>
 
                         <small class="text-center mt-4 d-block">
