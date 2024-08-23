@@ -15,16 +15,13 @@
                 <div class="row">
                     <div class="offset-2 col-md-4">
                         <div class="d-flex justify-content-between mb-4">
-                            <div>
-                                <img src="{{ asset('seat_available.png') }}" alt="" width="80">
+                            <div style="background: #27ae60; color: #ffffff; height: 80px; width: 80px; border-radius: 5px" class="d-flex align-items-center justify-content-center">
                                 <small class="text-center fw-light d-block">Available</small>
                             </div>
-                            <div>
-                                <img src="{{ asset('seat_reserved.png') }}" alt="" width="80">
+                            <div style="background: #e74c3c; color: #ffffff; height: 80px; width: 80px; border-radius: 5px" class="d-flex align-items-center justify-content-center">
                                 <small class="text-center fw-light d-block">Reserved</small>
                             </div>
-                            <div>
-                                <img src="{{ asset('seat_selected.png') }}" alt="" width="80">
+                            <div style="background: #2980b9; color: #ffffff; height: 80px; width: 80px; border-radius: 5px" class="d-flex align-items-center justify-content-center">
                                 <small class="text-center fw-light d-block">Selected</small>
                             </div>
                         </div>
@@ -109,7 +106,7 @@
                                     <img src="{{ asset('payment_method.png') }}" class="img-fluid" width="120" alt="">
                                     <img src="{{ asset('payment_method_cash.webp') }}" class="img-fluid mt-1" width="55" alt="">
                                 </div>
-                                
+
                                 <div class="mt-2">
                                     <div class="form-check">
                                         <input class="form-check-input payment-method" type="radio"

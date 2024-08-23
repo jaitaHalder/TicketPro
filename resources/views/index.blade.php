@@ -17,42 +17,40 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <label for="origin"></label>
-                        <select name="origin" id="origin" class="form-select form-select-lg">
-                            <option value="">Choose Origin</option>
-                            @foreach($origins as $origin)
-                                <option value="{{ $origin->originBusStop->id }}" @selected($origin->originBusStop->id == request()->input('origin'))>{{ $origin->originBusStop->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    <div class="offset-lg-3 col-lg-6">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="origin"></label>
+                                <select name="origin" id="origin" class="form-select form-select-lg">
+                                    <option value="">Choose Origin</option>
+                                    @foreach($origins as $origin)
+                                        <option value="{{ $origin->originBusStop->id }}" @selected($origin->originBusStop->id == request()->input('origin'))>{{ $origin->originBusStop->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                    <div class="col-md-4">
-                        <label for="destination"></label>
-                        <select name="destination" id="destination" class="form-select form-select-lg">
-                            <option value="">Choose Destination</option>
-                            @foreach($destinations as $destination)
-                                <option value="{{ $destination->destinationBusStop->id }}" @selected($destination->destinationBusStop->id == request()->input('destination'))>{{ $destination->destinationBusStop->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                            <div class="col-12">
+                                <label for="destination"></label>
+                                <select name="destination" id="destination" class="form-select form-select-lg">
+                                    <option value="">Choose Destination</option>
+                                    @foreach($destinations as $destination)
+                                        <option value="{{ $destination->destinationBusStop->id }}" @selected($destination->destinationBusStop->id == request()->input('destination'))>{{ $destination->destinationBusStop->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                    <div class="col-md-4">
-                        <label for="date"></label>
-                        <input type="date" name="date" id="date" value="{{ request()->input('date') ?? $date }}" min="<?= date('Y-m-d'); ?>"
-                               class="form-control form-control-lg">
-                    </div>
-                </div>
+                            <div class="col-12">
+                                <label for="date"></label>
+                                <input type="date" name="date" id="date" value="{{ request()->input('date') ?? $date }}" min="<?= date('Y-m-d'); ?>"
+                                       class="form-control form-control-lg">
+                            </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="d-flex justify-content-center mt-5">
-                            <div class="d-flex flex-column">
-                                <button id="search" class="btn bg-primary-800 hover-primary-700 btn-lg text-white px-5">
+                            <div class="col-12">
+                                <button id="search" class="btn mt-4 w-100 bg-primary-800 hover-primary-700 btn-lg text-white px-5">
                                     SEARCH BUS
                                 </button>
 
-                                <button id="clear" class="btn bg-transparent text-light btn-sm px-5 mt-4">CLEAR
+                                <button id="clear" class="btn w-100 bg-transparent text-light btn-sm px-5 mt-4">CLEAR
                                 </button>
                             </div>
                         </div>
