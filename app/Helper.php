@@ -10,7 +10,7 @@ class Helper
 {
     public const LENGTH_UNIT = 'km';
     public const CURRENCY = 'BDT';
-    public const COPYRIGHT = 'Copyright &copy; 2024 by jaita.net';
+    public const COPYRIGHT = 'Copyright &copy; 2024 by Jaita Haldar';
 
     /**
      * @param string|null $timestamp

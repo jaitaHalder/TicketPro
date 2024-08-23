@@ -128,20 +128,23 @@ nav {
     font-weight: bold;
     color: #fff;
     transition: background-color 0.3s;
+    margin-bottom: 10px;
 }
 
 .seat.available {
-    background-image: url("./seat_available.png");
+    /*background-image: url("./seat_available.png");*/
     cursor: pointer;
+    background-color: #27ae60;
 }
 
 .seat.reserved {
-    background-image: url("./seat_reserved.png");
+    /*background-image: url("./seat_reserved.png");*/
     cursor: not-allowed;
+    background-color: #e74c3c;
 }
 
 .seat.selected {
-    background-color: #4e73df;
+    background-color: #2980b9;
 }
 
 .aisle {
@@ -157,7 +160,8 @@ input[type="checkbox"] {
 input[type="checkbox"] + label {
     width: 80px;
     height: 80px;
-    background-image: url("./seat_disabled.png");
+    /*background-image: url("./seat_disabled.png");*/
+    background-color: #34495e;
     background-size: cover;
     border-radius: 5px;
     display: flex;
@@ -170,7 +174,8 @@ input[type="checkbox"] + label {
 }
 
 input[type="checkbox"]:checked + label {
-    background-image: url("./seat_selected.png");
+    /*background-image: url("./seat_selected.png");*/
+    background-color: #2980b9;
 }
 
 table th{
